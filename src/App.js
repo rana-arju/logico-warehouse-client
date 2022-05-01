@@ -6,6 +6,9 @@ import Home from './components/Home/Home';
 import Login from './components/Access/Login';
 import Register from './components/Access/Register';
 import AddProduct from './components/AddProduct/AddProduct';
+import ManageInventory from './components/ManageInventory/ManageInventory';
+import MyProducts from './components/MyProducts/MyProducts';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -17,7 +20,10 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/addProduct' element={<AddProduct />} />
+        <Route path='/manageInventory' element={<ManageInventory />} />
+        <Route path='/myproduct' element={<MyProducts />} />
       </Routes>
+      <Footer />
       
   </div>
   );
