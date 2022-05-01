@@ -4,7 +4,10 @@
 }
 .social-login div{
     height: 2px;
-    width: 150px;
+    width: 160px;
     background-color: red;
     margin: 10px;
+}
+.g-btn{
+    font-size: 22px !important;
 }

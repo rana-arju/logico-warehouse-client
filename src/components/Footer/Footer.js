@@ -1,9 +1,10 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 const Footer = () => {
     return (
-        <div>
-            
+<div  className=" border-t-2 mt-20">
+<Container>       
 <footer className="p-4 bg-white sm:p-6 dark:bg-gray-800">
 <div className="md:flex md:justify-between">
 <div className="mb-6 md:mb-0">
@@ -71,8 +72,8 @@ const Footer = () => {
 </div>
 </div>
 </footer>
-
-        </div>
+</Container>
+</div>
     );
 };
 
