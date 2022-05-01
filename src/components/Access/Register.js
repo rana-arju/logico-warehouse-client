@@ -1,10 +1,10 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
+import { Button, Container, Form } from 'react-bootstrap';
+import SocialMedia from './SocialMedia/SocialMedia';
 const Register = () => {
     return (
-        <div>
-            <h2>Register</h2>
-        </div>
+
     );
 };
 

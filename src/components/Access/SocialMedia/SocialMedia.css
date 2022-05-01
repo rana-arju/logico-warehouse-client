@@ -1,0 +1,10 @@
+.social-login{
+    display: flex;
+    justify-content: center;
+}
+.social-login div{
+    height: 2px;
+    width: 150px;
+    background-color: red;
+    margin: 10px;
+}
