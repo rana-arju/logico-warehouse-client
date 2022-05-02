@@ -11,6 +11,7 @@ import MyProducts from './components/MyProducts/MyProducts';
 import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
 import RequireAuth from './RequireAuth/RequireAuth';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
         <Route path="*" element= {<NotFound />} />
       </Routes>
       <Footer />
-      
+      <ToastContainer />
   </div>
   );
 }

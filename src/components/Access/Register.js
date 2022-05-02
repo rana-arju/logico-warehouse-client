@@ -2,9 +2,9 @@ import React from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import { Button, Container, Form } from 'react-bootstrap';
 import SocialMedia from './SocialMedia/SocialMedia';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-  import {toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,9 +15,9 @@ const Register = () => {
     loading,
     error,
   ] = useCreateUserWithEmailAndPassword(auth);
-
+  const [sendEmailVerification] = useSendEmailVerification(auth);
   if (error) {
-    toast.error(error);
+    return toast.error(error.message);
   }
   if (loading) {
     return <p>Loading...</p>;
@@ -30,23 +30,32 @@ const handleRegister = async(event) =>{
     // const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    await createUserWithEmailAndPassword(email, password);
-    event.target.reset();
+    if(password.length < 6){
+       return toast.error('Please Enter At least 6 Character password');
+    }else{
+      await createUserWithEmailAndPassword(email, password);
+      await sendEmailVerification();
+      toast.success('Verification Email Send!');
+      event.target.reset();
+     
+
+    }
+ 
 
 }
 
-    return (
+return (
 <Container className="my-10 border-2 border-red-500 rounded-xl box mx-auto p-4">
-    <h2 className='mt-3 text-center'>Please Register</h2>
+<h2 className='mt-3 text-center'>Please Register</h2>
 <div className="my-10">
 <Form onSubmit={handleRegister}>
     <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Full Name</Form.Label>
-        <Form.Control type="text" name='name' placeholder="Enter Your Name" />
+        <Form.Control type="text" name='name' placeholder="Enter Your Name" required />
     </Form.Group>
     <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name='email' placeholder="Enter email" />
+        <Form.Control type="email" name='email' placeholder="Enter email" required />
         <Form.Text className="text-muted">
         We'll never share your email with anyone else.
         </Form.Text>
@@ -54,18 +63,19 @@ const handleRegister = async(event) =>{
 
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name='password' placeholder="Password" />
+        <Form.Control type="password" name='password' placeholder="Password" required />
     </Form.Group>
     <Form.Text id="passwordHelpBlock">
        <p  className='text-lg'> Already Have An Account?<Link to="/login"> Please Login</Link> </p>
   </Form.Text>
     <div className="d-grid gap-2 mt-3">
-        <Button variant="primary" size="lg" type="submit">Register</Button>
+        <Button variant="primary" size="lg" type="submit" >Register</Button>
     </div>
 </Form>
 
 </div>
 <SocialMedia />
+
 </Container>
     );
 };
