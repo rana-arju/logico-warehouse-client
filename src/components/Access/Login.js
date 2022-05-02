@@ -26,7 +26,7 @@ const [
   if (error) {
     return (
       <div>
-        <p>Error: {error.message}</p>
+        <p>{error.message}</p>
       </div>
     );
   }
@@ -35,6 +35,7 @@ const [
   }
   if (user) {
       navigate(from, { replace: true }); 
+      toast.success(`Thank You For joining us!`)
   }
 
   const handleLogin = event => {

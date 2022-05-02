@@ -21,9 +21,8 @@ const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   }
   if (user) {
     navigate(from, { replace: true }); 
-   toast.success("welcome")
+    console.log(user);   toast.success(`Thank You For joining us!`)
   }
-  
     return (
         <div>
         <div  className='social-login mx-auto'>
@@ -38,5 +37,4 @@ const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
         </div>
     );
 };
-
 export default SocialMedia;

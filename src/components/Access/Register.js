@@ -24,10 +24,10 @@ const Register = () => {
   }
   if (user) {
    navigate(from, { replace: true }); 
+   toast.success(`Thank You For joining us!`);
   }
 const handleRegister = async(event) =>{
     event.preventDefault();
-    // const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     if(password.length < 6){
@@ -37,13 +37,8 @@ const handleRegister = async(event) =>{
       await sendEmailVerification();
       toast.success('Verification Email Send!');
       event.target.reset();
-     
-
     }
- 
-
 }
-
 return (
 <Container className="my-10 border-2 border-red-500 rounded-xl box mx-auto p-4">
 <h2 className='mt-3 text-center'>Please Register</h2>
@@ -72,10 +67,8 @@ return (
         <Button variant="primary" size="lg" type="submit" >Register</Button>
     </div>
 </Form>
-
 </div>
 <SocialMedia />
-
 </Container>
     );
 };
