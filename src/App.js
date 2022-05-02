@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
 import RequireAuth from './RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
+import ContactUs from './components/ContactUs/ContactUs';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/addProduct' element={<AddProduct />} />
+        <Route path='/contact' element={<ContactUs />} />
         <Route path='/manageInventory' element={
         <RequireAuth>
             <ManageInventory />

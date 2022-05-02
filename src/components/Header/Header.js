@@ -30,6 +30,9 @@ const [user] = useAuthState(auth);
     <LinkContainer to='/blog'>
         <Nav.Link>Blog</Nav.Link>
     </LinkContainer>
+    <LinkContainer to='/contact'>
+        <Nav.Link>Contact Us</Nav.Link>
+    </LinkContainer>
        </Nav>
      <div className="d-flex nav-login">
        {
