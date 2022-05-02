@@ -11,3 +11,11 @@
 .g-btn{
     font-size: 22px !important;
 }
+.box{
+    width: 50% !important;
+}
+@media only screen and (max-width: 795px) {
+    .box{
+    width: 95% !important;
+}
+}
