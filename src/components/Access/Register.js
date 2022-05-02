@@ -5,6 +5,7 @@ import SocialMedia from './SocialMedia/SocialMedia';
 import {useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import {toast} from 'react-toastify';
+import PageTitle from '../PageTitle/PageTitle';
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,6 +42,7 @@ const handleRegister = async(event) =>{
 }
 return (
 <Container className="my-10 border-2 border-red-500 rounded-xl box mx-auto p-4">
+  <PageTitle title="Registation" />
 <h2 className='mt-3 text-center'>Please Register</h2>
 <div className="my-10">
 <Form onSubmit={handleRegister}>

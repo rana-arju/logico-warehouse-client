@@ -4,7 +4,9 @@ import {Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const NotFound = () => {
     return (
-	<Container id="notfound" className='px-10'>
+<div id="notfound">
+	<Container >
+		
 		<div className="notfound">
 			<div className="notfound-404">
 				<h1>4<span>0</span>4</h1>
@@ -13,7 +15,9 @@ const NotFound = () => {
 		
             <Link to="/">Home Page</Link>
 		</div>
+		
 	</Container>
+	</div>
     );
 };
 
