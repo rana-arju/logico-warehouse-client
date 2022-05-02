@@ -60,6 +60,9 @@ return (
     <div className="d-grid gap-2 mt-3">
         <Button variant="primary" size="lg" type="submit">Login</Button>
     </div>
+    <Form.Text id="passwordHelpBlock">
+       <p className='text-lg'> Forgot Password?<Link to="/register">Please Reset</Link> </p>
+  </Form.Text>
 </Form>
 </div>
 <SocialMedia />
