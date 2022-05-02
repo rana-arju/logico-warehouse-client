@@ -4,8 +4,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import SocialMedia from './SocialMedia/SocialMedia';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { signOut } from 'firebase/auth';
-
+import PageTitle from '../PageTitle/PageTitle';
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -39,6 +38,7 @@ const [
   }
 return (
 <Container className=" mx-auto p-4 my-10 border-2 border-red-500 rounded-xl box">
+  <PageTitle title="Login" />
     <h2 className='mt-3 text-center'>Please Login</h2>
     <div className="my-10">
 <Form onSubmit={handleLogin}>
@@ -61,7 +61,7 @@ return (
         <Button variant="primary" size="lg" type="submit">Login</Button>
     </div>
     <Form.Text id="passwordHelpBlock">
-       <p className='text-lg'> Forgot Password?<Link to="/register">Please Reset</Link> </p>
+       <p className='text-lg'> Forgot Password?<Link to="/register"> Please Reset</Link> </p>
   </Form.Text>
 </Form>
 </div>
