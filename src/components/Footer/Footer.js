@@ -5,14 +5,13 @@ import { BsGithub, BsFacebook} from 'react-icons/bs';
 
 const Footer = () => {
     return (
-<div  className=" border-t-2 mt-20">
+<div  className=" border-t-2 mt-2">
 <Container>       
 <footer className="p-4 bg-white sm:p-6 dark:bg-gray-800">
 <div className="md:flex md:justify-between">
 <div className="mb-6 md:mb-0">
-<a href="https://flowbite.com" className="flex items-center">
-<img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-8" alt="FlowBite Logo" />
-<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+<a href="/" className="flex items-center">
+<img src="https://i.ibb.co/gj24c9g/logo.jpg" className="mr-2 h-20" alt="footer Logo" />
 </a>
 </div>
 <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">

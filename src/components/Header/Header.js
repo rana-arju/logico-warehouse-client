@@ -9,11 +9,14 @@ const [user] = useAuthState(auth);
   const logout = () => {
     signOut(auth);
   };
+  
+
     return (
     <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
-    <Container> 
-    <img className="w-10 h-10 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar" />
-
+    <Container>
+    <LinkContainer to='/'>
+        <img className="w-40 h-15 rounded-md mr-3 cursor-pointer" src="https://i.ibb.co/gj24c9g/logo.jpg" alt="site logo" />
+    </LinkContainer>
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
       <Nav className="me-auto my-2 my-lg-0" navbarScroll
