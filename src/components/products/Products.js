@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {toast } from 'react-toastify';
 import { Container } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap'
 import "./Products.css";
 
 const Products = () => {
@@ -17,7 +16,7 @@ const Products = () => {
         })();
     },[]);
     const handleUpdate = id => {
-        const path = `/blog/${id}`;
+        const path = `/inventory/${id}`;
         navigate(path);
     }
     return (

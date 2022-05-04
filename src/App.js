@@ -21,12 +21,12 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/blog/:id' element={<Blog />} />
+        <Route path='/blog' element={<Blog />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/addProduct' element={<AddProduct />} />
         <Route path='/contact' element={<ContactUs />} />
-        <Route path='/inventory/' element={
+        <Route path='/inventory/:id' element={
         <RequireAuth>
             <Inventory />
         </RequireAuth>

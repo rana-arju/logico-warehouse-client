@@ -6,6 +6,7 @@ import {useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'reac
 import auth from '../../firebase.init';
 import {toast} from 'react-toastify';
 import PageTitle from '../PageTitle/PageTitle';
+import Loading from '../loading/Loading';
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,7 +22,7 @@ const Register = () => {
     return toast.error(error.message);
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
   if (user) {
    navigate(from, { replace: true }); 

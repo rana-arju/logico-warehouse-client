@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import Loading from '../../loading/Loading';
 import './SocialMedia.css';
 const SocialMedia = () => {
     const navigate = useNavigate();
@@ -12,12 +13,11 @@ const SocialMedia = () => {
     let from = location.state?.from?.pathname || "/";
 const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   if (error) {
-   
       toast.error(error.message)
 
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
   if (user) {
     navigate(from, { replace: true }); 

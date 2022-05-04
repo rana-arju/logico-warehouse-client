@@ -6,6 +6,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import auth from '../../firebase.init';
 import PageTitle from '../PageTitle/PageTitle';
 import { toast } from 'react-toastify';
+import Loading from '../loading/Loading';
 
 const Login = () => {
   const [email, setEmail] = useState();
@@ -23,15 +24,12 @@ const [
   loading,
   error,
 ] = useSignInWithEmailAndPassword(auth);
-  if (error) {
-    return (
-      <div>
-        <p>{error.message}</p>
-      </div>
-    );
+let errorReport;
+  if (error || reError) {
+    errorReport = <p className='text-danger font-bold'>{error.message}</p>
   }
-  if (loading) {
-    return <p>Loading...</p>;
+  if (loading || sending) {
+    return <Loading />;
   }
   if (user) {
       navigate(from, { replace: true }); 
@@ -56,6 +54,7 @@ const [
 return (
 <Container className=" mx-auto p-4 my-10 border-2 border-red-500 rounded-xl box">
   <PageTitle title="Login" />
+  {errorReport}
     <h2 className='mt-3 text-center'>Please Login</h2>
     <div className="my-10">
 <Form onSubmit={handleLogin}>
