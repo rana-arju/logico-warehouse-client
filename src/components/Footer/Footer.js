@@ -5,9 +5,9 @@ import { BsGithub, BsFacebook} from 'react-icons/bs';
 
 const Footer = () => {
     return (
-<div  className=" border-t-2 mt-2">
+<div  className=" border-t-2 mt-2"  style={{backgroundColor: '#FAFAFA'}}>
 <Container>       
-<footer className="p-4 bg-white sm:p-6 dark:bg-gray-800">
+<footer className="p-4 b sm:p-6 dark:bg-gray-800">
 <div className="md:flex md:justify-between">
 <div className="mb-6 md:mb-0">
 <a href="/" className="flex items-center">

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {useNavigate, useParams} from 'react-router-dom';
 import {toast } from 'react-toastify';
 import { Container } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 import "./Products.css";
 
 const Products = () => {
+    const navigate = useNavigate();
     const [products, setProduct] = useState([]);
     useEffect(()=>{
         (async()=>{
@@ -12,29 +15,40 @@ const Products = () => {
             if (!data?.success) return toast.error(data.error);
             setProduct(data?.data);
         })();
-    },[])
+    },[]);
+    const handleUpdate = id => {
+        const path = `/blog/${id}`;
+        navigate(path);
+    }
     return (
+        <div>
+        <h2 className='text-center mt-7 text-uppercase text-primary'>Our Products</h2>
         <Container className='product-container'>
+           
             {
-               products.map(product => <div class="product-card" key={product._id}>
-            <div class="product-tumb">
+               products.map(product => <div className="product-card" key={product._id}>
+            <div className="product-tumb">
                 <img src={product.images} alt="" />
             </div>
-            <div class="product-details">
-                <span class="product-sellar">{product.sellar}</span>
+            <div className="product-details">
+                <span className="product-sellar">Sellar: {product.sellar}</span>
                 <h4>{product.name}</h4>
-                <p>{product.description}</p>
-           		<div class="product-bottom-details">
-				<div class="product-price">{product.price}</div>
-				<div class="product-stock">
+                <p>{product.description.slice(0,100)+ "...."}</p>
+           		<div className="product-bottom-details">
+				<div className="product-price">Price: &#2547; {product.price}</div>
+				<div className="product-stock">
                 <p>Stock: <span>{product.stock}</span></p>
 				</div>
 			</div>
+            <div class="d-grid gap-2 ">
+            <button class="btn btn-primary" type="button" onClick={() => handleUpdate(product._id)}>Stock Update</button>
+            </div>
             </div>
         </div> )
             }
        
         </Container>
+        </div>
     );
 };
 

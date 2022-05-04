@@ -13,6 +13,7 @@ import NotFound from './components/NotFound/NotFound';
 import RequireAuth from './RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import ContactUs from './components/ContactUs/ContactUs';
+import Inventory from './components/Inventory/Inventory';
 
 function App() {
   return (
@@ -20,16 +21,17 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/blog' element={<Blog />} />
+        <Route path='/blog/:id' element={<Blog />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/addProduct' element={<AddProduct />} />
         <Route path='/contact' element={<ContactUs />} />
-        <Route path='/manageInventory' element={
+        <Route path='/inventory/' element={
         <RequireAuth>
-            <ManageInventory />
+            <Inventory />
         </RequireAuth>
-       } />
+       } /> 
+      <Route path="/manageInventory" element={<ManageInventory />} />
         <Route path='/myproduct' element={
           <RequireAuth>
               <MyProducts />

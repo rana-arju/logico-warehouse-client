@@ -27,7 +27,7 @@ const [user] = useAuthState(auth);
     <LinkContainer to='/myproduct'>
         <Nav.Link>My Product</Nav.Link>
     </LinkContainer>
-    <LinkContainer to='/manageInventory'>
+    <LinkContainer to='/inventory'>
         <Nav.Link>Manage Inventory</Nav.Link>
     </LinkContainer>
     <LinkContainer to='/blog'>
