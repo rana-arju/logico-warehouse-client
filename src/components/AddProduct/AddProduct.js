@@ -2,19 +2,22 @@ import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import PageTitle from '../PageTitle/PageTitle';
 import { toast } from 'react-toastify';
-
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 const AddProduct = () => {
+    const [user] = useAuthState(auth);
     const handleContactForm = (event) => {
         event.preventDefault();
         const name = event.target.name.value;
+        const email = user.email;
         const sellar = event.target.sellar.value;
         const price = event.target.price.value;
         const stock = event.target.stock.value;
         const images = event.target.url.value;
         const description = event.target.description.value;
-        const product = {name,description,price,stock,images,sellar};
+        const product = {name,email,description,price,stock,images,sellar};
         // send data to the server
-        fetch(`https://thawing-mountain-76840.herokuapp.com/products`,{
+        fetch(`http://localhost:5000/allproducts`,{
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -43,6 +46,10 @@ const AddProduct = () => {
     <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Sellar Name</Form.Label>
         <Form.Control type="text" name='sellar' placeholder="Sellar Name" required />
+    </Form.Group>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Sellar Email</Form.Label>
+        <Form.Control type="text"  value={user.email} disabled required />
     </Form.Group>
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Price</Form.Label>

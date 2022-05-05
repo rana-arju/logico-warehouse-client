@@ -4,12 +4,13 @@ import { Container } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { toast } from 'react-toastify';
 import "./ManageInventory.css";
+import PageTitle from '../PageTitle/PageTitle';
 
 const ManageInventory = () => {
     const [products, setProduct] = useState([]);
     useEffect(()=>{
         (async()=>{
-            const {data} = await axios.get(`https://thawing-mountain-76840.herokuapp.com/allproducts`);
+            const {data} = await axios.get(`http://localhost:5000/allproducts`);
             if (!data?.success) return toast.error(data.error);
             setProduct(data?.data);
         })();
@@ -17,7 +18,7 @@ const ManageInventory = () => {
     const handleDeleteItem =id =>{
         const proceed = window.confirm('Are You Sure? Want To Delete This Item?');
         if (proceed) {
-            fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`,{
+            fetch(`http://localhost:5000/products/${id}`,{
                 method: "DELETE"
             })
             .then(res => res.json())
@@ -31,6 +32,7 @@ const ManageInventory = () => {
     return (
       <div>
           <div className='btn-container'>
+              <PageTitle title="Manage Inventory" />
             <LinkContainer to="/addProduct">
                 <button className="btn btn-outline-primary btn-lg" variant="lg" type="button">Add New Item</button>
             </LinkContainer>
