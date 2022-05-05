@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {toast } from 'react-toastify';
 import { Container } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 import "./Products.css";
 
 const Products = () => {
@@ -22,7 +23,8 @@ const Products = () => {
     return (
         <div>
         <h2 className='text-center mt-7 text-uppercase text-primary'>Our Products</h2>
-        <Container className='product-container'>
+        <Container>
+            <div className='product-container'>
            
             {
                products.map(product => <div className="product-card" key={product._id}>
@@ -39,13 +41,16 @@ const Products = () => {
                 <p>Stock: <span>{product.stock}</span></p>
 				</div>
 			</div>
-            <div class="d-grid gap-2 ">
-            <button class="btn btn-primary" type="button" onClick={() => handleUpdate(product._id)}>Stock Update</button>
+            <div className="d-grid gap-2 ">
+            <button className="btn btn-primary" type="button" onClick={() => handleUpdate(product._id)}>Stock Update</button>
             </div>
             </div>
         </div> )
             }
-       
+        </div>
+        <LinkContainer to="/manageInventory">
+            <button className="btn btn-primary btn-lg btn-block mb-5" variant="lg" type="button">Manage Inventories</button>
+        </LinkContainer>
         </Container>
         </div>
     );

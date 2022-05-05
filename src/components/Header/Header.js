@@ -24,12 +24,21 @@ const [user] = useAuthState(auth);
     <LinkContainer to='/'>
         <Nav.Link>Home</Nav.Link>
     </LinkContainer>
+      {
+        user ? <>
     <LinkContainer to='/myproduct'>
         <Nav.Link>My Product</Nav.Link>
     </LinkContainer>
-    <LinkContainer to='/inventory'>
+    <LinkContainer to='/manageInventory'>
         <Nav.Link>Manage Inventory</Nav.Link>
     </LinkContainer>
+    <LinkContainer to='/addProduct'>
+        <Nav.Link>Add Product</Nav.Link>
+    </LinkContainer>
+        </>:
+        " "
+      }
+
     <LinkContainer to='/blog'>
         <Nav.Link>Blog</Nav.Link>
     </LinkContainer>
