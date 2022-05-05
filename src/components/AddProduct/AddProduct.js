@@ -14,7 +14,7 @@ const AddProduct = () => {
         const description = event.target.description.value;
         const product = {name,description,price,stock,images,sellar};
         // send data to the server
-        fetch(`http://localhost:5000/products`,{
+        fetch(`https://thawing-mountain-76840.herokuapp.com/products`,{
             method: "POST",
             headers: {
                 'content-type': 'application/json'
