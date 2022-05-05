@@ -14,6 +14,20 @@ const ManageInventory = () => {
             setProduct(data?.data);
         })();
     },[]);
+    const handleDeleteItem =id =>{
+        const proceed = window.confirm('Are You Sure? Want To Delete This Item?');
+        if (proceed) {
+            fetch(`http://localhost:5000/products/${id}`,{
+                method: "DELETE"
+            })
+            .then(res => res.json())
+            .then(data => {
+                const remaining = products.filter(product => product._id !== id);
+                setProduct(remaining);
+                toast.success(data.message);
+            })
+        }
+    }
     return (
       <div>
           <div className='btn-container'>
@@ -41,7 +55,7 @@ const ManageInventory = () => {
 				</div>
 			</div>
             <div className="d-grid gap-2 ">
-            <button className="btn btn-danger" type="button">Delete Item</button> 
+            <button className="btn btn-danger" type="button" onClick={() => handleDeleteItem(product._id)}>Delete Item</button> 
             </div>
             </div>
         </div> )
