@@ -11,7 +11,7 @@ const MyProducts = () => {
     useEffect(() => {
         const getMyProducts = async() => {
         const email = user.email;
-        const url = `http://localhost:5000/myproducts?email=${email}`;
+        const url = `https://thawing-mountain-76840.herokuapp.com/myproducts?email=${email}`;
         const {data} = await axios.get(url);
         setProduct(data);
         }
@@ -20,7 +20,7 @@ const MyProducts = () => {
         const handleDeleteItem =id =>{
         const proceed = window.confirm('Are You Sure? Want To Delete This Item?');
         if (proceed) {
-            fetch(`http://localhost:5000/products/${id}`,{
+            fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`,{
                 method: "DELETE"
             })
             .then(res => res.json())

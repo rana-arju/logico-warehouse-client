@@ -7,7 +7,7 @@ const Inventory = () => {
    let {id} = useParams();
    const [products, setProduct] = useState({});
     useEffect(() =>{
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`)
         .then(res => res.json())
         .then(data => {
             setProduct(data);
@@ -16,7 +16,7 @@ const Inventory = () => {
 
     const [deliver, setDeliver] = useState(0);
       useEffect(() =>{
-        fetch(`http://localhost:5000/allproducts/${id}`)
+        fetch(`https://thawing-mountain-76840.herokuapp.com/allproducts/${id}`)
         .then(res => res.json())
         .then(data => {
             setDeliver(data.stock);
@@ -38,7 +38,7 @@ const Inventory = () => {
         setDeliver(finalStock);
     };
    useEffect(() =>{
-        fetch(`http://localhost:5000/allproducts/${id}`, {
+        fetch(`https://thawing-mountain-76840.herokuapp.com/allproducts/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -71,7 +71,7 @@ const Inventory = () => {
             <div className="input-group mb-3">
                 <form onSubmit={handleReStock }>
                     <input type="number" name="restock" 
-                     className="form-control" placeholder="Enter Value" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                     className="form-control" placeholder="Enter Value" aria-label="Recipient's username" aria-describedby="basic-addon2" required />
                     <div className="input-group-append">
                         <button className="btn btn-outline-primary" type="submit" >Restock Item</button>
                     </div>
