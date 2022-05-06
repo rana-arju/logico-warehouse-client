@@ -7,23 +7,39 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import PageTitle from '../PageTitle/PageTitle';
 import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 const MyProducts = () => {
     const navigate = useNavigate();
     const [user]= useAuthState(auth);
+
+    //find sindle item help of email
     const [products, setProduct] = useState([]);
     useEffect(() => {
         const getMyProducts = async() => {
         const email = user.email;
-        const url = `https://thawing-mountain-76840.herokuapp.com/myproducts?email=${email}`;
-        const {data} = await axios.get(url);
+        const url = `http://localhost:5000/myproducts?email=${email}`;
+        try {
+         const {data} = await axios.get(url, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
         setProduct(data);
+        } catch (error) {
+            if(error.response.status === 403 || error.response.status === 401){
+                signOut(auth);
+                navigate('/login');
+                toast.error(error.message)
+            };
+        }
         }
         getMyProducts();
     },[user]);
+    //single item delete functionality added
         const handleDeleteItem =id =>{
         const proceed = window.confirm('Are You Sure? Want To Delete This Item?');
         if (proceed) {
-            fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`,{
+            fetch(`http://localhost:5000/products/${id}`,{
                 method: "DELETE"
             })
             .then(res => res.json())

@@ -9,9 +9,7 @@ const [user] = useAuthState(auth);
   const logout = () => {
     signOut(auth);
   };
-  
-
-    return (
+return (
     <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
     <Container>
     <LinkContainer to='/'>

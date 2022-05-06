@@ -7,18 +7,20 @@ import "./ManageInventory.css";
 import PageTitle from '../PageTitle/PageTitle';
 
 const ManageInventory = () => {
+    //get all product from database
     const [products, setProduct] = useState([]);
     useEffect(()=>{
         (async()=>{
-            const {data} = await axios.get(`https://thawing-mountain-76840.herokuapp.com/allproducts`);
+            const {data} = await axios.get(`http://localhost:5000/allproducts`);
             if (!data?.success) return toast.error(data.error);
             setProduct(data?.data);
         })();
     },[]);
+    //delete button handle
     const handleDeleteItem =id =>{
         const proceed = window.confirm('Are You Sure? Want To Delete This Item?');
         if (proceed) {
-            fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`,{
+            fetch(`http://localhost:5000/products/${id}`,{
                 method: "DELETE"
             })
             .then(res => res.json())

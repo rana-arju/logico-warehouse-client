@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 import PageTitle from '../PageTitle/PageTitle';
 import { toast } from 'react-toastify';
 import Loading from '../loading/Loading';
-
+import axios from 'axios';
 const Login = () => {
   const [email, setEmail] = useState();
     const navigate = useNavigate();
@@ -36,12 +36,14 @@ let errorReport;
       toast.success(`Thank You For joining us!`)
   }
 
-  const handleLogin = event => {
-      event.preventDefault();
+  const handleLogin = async(event) => {
+    event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    signInWithEmailAndPassword(email,password);
-      event.target.reset();
+    await signInWithEmailAndPassword(email,password);
+    const {data} = await axios.post('http://localhost:5000/login',{email});
+      localStorage.setItem('accessToken', data.accessToken);
+    event.target.reset();
   }
   const resetPassword = async() => {
     if (email) {

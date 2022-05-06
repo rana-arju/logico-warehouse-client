@@ -8,14 +8,16 @@ import "./Products.css";
 
 const Products = () => {
     const navigate = useNavigate();
+    //six item show help of this api
     const [products, setProduct] = useState([]);
     useEffect(()=>{
         (async()=>{
-            const {data} = await axios.get(`https://thawing-mountain-76840.herokuapp.com/products`);
+            const {data} = await axios.get(`http://localhost:5000/products`);
             if (!data?.success) return toast.error(data.error);
             setProduct(data?.data);
         })();
     },[]);
+    //whan handle button click this redirect inventory/:id page
     const handleUpdate = id => {
         const path = `/inventory/${id}`;
         navigate(path);

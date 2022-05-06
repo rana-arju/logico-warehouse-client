@@ -6,18 +6,19 @@ import { toast } from 'react-toastify';
 import PageTitle from '../PageTitle/PageTitle';
 const Inventory = () => {
    let {id} = useParams();
+    // find specipic product by id
    const [products, setProduct] = useState({});
     useEffect(() =>{
-        fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`)
+        fetch(`http://localhost:5000/products/${id}`)
         .then(res => res.json())
         .then(data => {
             setProduct(data);
         })
     },[]);
-
+    // Product quentity increment and decrement set and update database
     const [deliver, setDeliver] = useState(0);
       useEffect(() =>{
-        fetch(`https://thawing-mountain-76840.herokuapp.com/allproducts/${id}`)
+        fetch(`http://localhost:5000/allproducts/${id}`)
         .then(res => res.json())
         .then(data => {
             setDeliver(data.stock);
@@ -38,8 +39,9 @@ const Inventory = () => {
         const finalStock = stockInput + deliver;
         setDeliver(finalStock);
     };
+    //Update product quentity
    useEffect(() =>{
-        fetch(`https://thawing-mountain-76840.herokuapp.com/allproducts/${id}`, {
+        fetch(`http://localhost:5000/allproducts/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -70,15 +72,17 @@ const Inventory = () => {
                 <p>Stock: <span>{deliver}</span></p>
 				</div>
 			</div>
-            <div className="input-group mb-3">
+           
                 <form onSubmit={handleReStock }>
+                <div className="input-group mb-3">
                     <input type="number" name="restock" 
-                     className="form-control" placeholder="Enter Value" aria-label="Recipient's username" aria-describedby="basic-addon2" required />
+                     className="form-control" placeholder="Enter Value"  required />
                     <div className="input-group-append">
                         <button className="btn btn-outline-primary" type="submit" >Restock Item</button>
                     </div>
+                </div>
                 </form>
-            </div>
+          
             <div className="d-grid gap-2 ">
                 <button onClick={handleDeliverd} className="btn btn-primary mt-3" type="button" >Delivered</button>
             </div>
