@@ -6,7 +6,9 @@ import {Container} from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import PageTitle from '../PageTitle/PageTitle';
+import { useNavigate } from 'react-router-dom';
 const MyProducts = () => {
+    const navigate = useNavigate();
     const [user]= useAuthState(auth);
     const [products, setProduct] = useState([]);
     useEffect(() => {
@@ -31,6 +33,11 @@ const MyProducts = () => {
                 toast.success(data.message);
             })
         }
+    }
+    //Redirect Inventory/:id Page
+      const handleUpdate = id => {
+        const path = `/inventory/${id}`;
+        navigate(path);
     }
     return (
     <Container className="mt-5 mb-5">
@@ -59,6 +66,7 @@ const MyProducts = () => {
                         <div className="d-flex flex-column">
                             <h5 className='text-primary mb-4'>Stock: {product.stock}</h5>
                             <button className="btn btn-danger btn-sm" type="button" onClick={() => handleDeleteItem(product._id)}>Delete Item</button>
+                            <button className="btn btn-outline-primary btn-sm mt-3" type="button" onClick={() => handleUpdate(product._id)}>Stock Update</button>
                            </div>
                 </div>
              </div>
