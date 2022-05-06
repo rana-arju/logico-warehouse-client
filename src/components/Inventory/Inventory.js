@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import "./Inventory.css";
 import { toast } from 'react-toastify';
+import PageTitle from '../PageTitle/PageTitle';
 const Inventory = () => {
    let {id} = useParams();
    const [products, setProduct] = useState({});
@@ -55,6 +56,7 @@ const Inventory = () => {
     return (
          <Container>
              <div className='product-card-inventory'>
+                 <PageTitle title="Product Quentity Update" />
             <div className="product-tumb">
                 <img src={products.images} alt="" />
             </div>

@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import {Container} from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import PageTitle from '../PageTitle/PageTitle';
 const MyProducts = () => {
     const [user]= useAuthState(auth);
     const [products, setProduct] = useState([]);
@@ -33,10 +34,11 @@ const MyProducts = () => {
     }
     return (
     <Container className="mt-5 mb-5">
+        <PageTitle title="My Product" />
         <h2 className='text-center mb-4 text-primary uppercase'>My All Products</h2>
         {
             products.map(product => 
-            <div className="d-flex justify-content-center row mb-3">
+            <div className="d-flex justify-content-center row mb-3" key={product._id}>
             <div className="col-md-10">
                 <div className="row p-2 bg-white border rounded">
                     <div className="col-md-3 mt-1"><img className="img-fluid img-responsive rounded product-image" src={product.images} alt={product.name} /></div>
