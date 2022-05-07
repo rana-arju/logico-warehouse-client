@@ -4,16 +4,22 @@ import { Link, useParams } from 'react-router-dom';
 import "./Inventory.css";
 import { toast } from 'react-toastify';
 import PageTitle from '../PageTitle/PageTitle';
+import SkaletonInventory from '../../Skeletons/SkaletonInventory';
 const Inventory = () => {
    let {id} = useParams();
     // find specipic product by id
-   const [products, setProduct] = useState({});
+   const [products, setProduct] = useState(null);
     useEffect(() =>{
-        fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`)
-        .then(res => res.json())
-        .then(data => {
+        setTimeout(async() => {
+            const res = await fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`);
+            const data = await res.json();
             setProduct(data);
-        })
+        },5000);
+        // fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`)
+        // .then(res => res.json())
+        // .then(data => {
+        //     setProduct(data);
+        // })
     },[]);
     // Product quentity increment and decrement set and update database
     const [deliver, setDeliver] = useState(0);
@@ -38,6 +44,7 @@ const Inventory = () => {
         const stockInput = parseInt(event.target.restock.value);
         const finalStock = stockInput + deliver;
         setDeliver(finalStock);
+        event.target.reset();
     };
     //Update product quentity
    useEffect(() =>{
@@ -57,6 +64,10 @@ const Inventory = () => {
 
     return (
          <Container>
+             {
+                 products && (
+
+             
              <div className='product-card-inventory'>
                  <PageTitle title="Product Quentity Update" />
             <div className="product-tumb">
@@ -93,6 +104,8 @@ const Inventory = () => {
             </div>
         </div>
         </div>
+           )}
+           {!products && <SkaletonInventory theme='light' />}
     </Container>
     );
 };

@@ -1,7 +1,7 @@
 # Logisco - Logistics & Transportation
 ## Live Preview 1: https://logica-f4803.web.app/
 ## Live Preview 2: https://logica-f4803.firebaseapp.com/
-
+![Logika full Vew Image](https://i.ibb.co/K9c8Tn6/logika-full-view.png)
 # Uses Technology - MERN STACK PROJECT
 - Mongodb - as a database language whare we store our data
 - express js - as a server language express js help clint site connect to database and transform data
