@@ -9,7 +9,7 @@ const Inventory = () => {
     // find specipic product by id
    const [products, setProduct] = useState({});
     useEffect(() =>{
-        fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`)
+        fetch(`http://localhost:5000/products/${id}`)
         .then(res => res.json())
         .then(data => {
             setProduct(data);
@@ -18,7 +18,7 @@ const Inventory = () => {
     // Product quentity increment and decrement set and update database
     const [deliver, setDeliver] = useState(0);
       useEffect(() =>{
-        fetch(`https://thawing-mountain-76840.herokuapp.com/allproducts/${id}`)
+        fetch(`http://localhost:5000/allproducts/${id}`)
         .then(res => res.json())
         .then(data => {
             setDeliver(data.stock);
@@ -41,7 +41,7 @@ const Inventory = () => {
     };
     //Update product quentity
    useEffect(() =>{
-        fetch(`https://thawing-mountain-76840.herokuapp.com/allproducts/${id}`, {
+        fetch(`http://localhost:5000/allproducts/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
