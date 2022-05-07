@@ -1,7 +1,7 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
 import PageTitle from '../PageTitle/PageTitle';
-import Products from '../Products/Products';
+import Products from '../products/Products';
 import Subscribe from '../Subscribe/Subscribe';
 import Testimonial from '../Testimonial/Testimonial';
 const Home = () => {

@@ -10,8 +10,8 @@ const Banner = () => {
                         <img src="https://i.ibb.co/XbfqGDc/banner1.png" className="img-fluid" alt="logica banner" />
                     </div>
                     <div className="col-lg-6">
-                        <h1 className="mt-3">Web Designing & Development</h1>
-                        <p className="lead text-secondary my-5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+                        <h1 className="mt-3 text-uppercase">we carry the <span className="color-title">latest equipment</span></h1>
+                        <p className="lead text-secondary my-5 text-capitalize">we provide fast service and new smartphone from our warehouse. genuine products. EMI facility.nationwide delivery.</p>
                         <Link to="/contact" className="btn btn-outline-secondary btn-lg border">Contact Us</Link>
                     </div>
                 </div>

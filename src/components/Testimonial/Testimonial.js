@@ -12,9 +12,8 @@ const Testimonial = () => {
             <img src="https://i.imgur.com/PKHvlRS.jpg" className="rounded-circle" width="80" alt='..' />
         </div>
         <div className="user-content">
-            <h5 className="mb-0">Bruce Hardy</h5>
-            <span>Software Developer</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>       
+            <h5 className="mb-0">Md. Shariot</h5>
+            <p>Received in due time and in good condition. hope service will be good. it is an official phone.</p>       
         </div>
     </div>
     </div>
@@ -23,13 +22,12 @@ const Testimonial = () => {
                 
                 <div className="user-image">
                     
-            <img src="https://i.imgur.com/w2CKRB9.jpg" className="rounded-circle" width="80" alt='..' />
+                <img src="https://i.imgur.com/w2CKRB9.jpg" className="rounded-circle" width="80" alt='..' />
                 </div>
                 <div className="user-content">
                     
-                    <h5 className="mb-0">Mark Smith</h5>
-                    <span>Web Developer</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h5 className="mb-0">Md. Rana Arju</h5>
+                    <p >Fast Delivary and Genuine Products. Thanks For Your Service. </p>
                     
                 </div>
                 
@@ -46,9 +44,8 @@ const Testimonial = () => {
             <img src="https://i.imgur.com/ACeArwY.jpg" className="rounded-circle" width="80" alt='..' />
                 </div>
                 <div className="user-content">
-                    <h5 className="mb-0">Veera  Duncan</h5>
-                    <span>Software Architect</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h5 className="mb-0">Rajaul Karim</h5>
+                    <p>Giving review after using it 7 days. and it's awesome. proper authentic phone ❤ Loving it. Highly recommended ❤</p>
                 </div>
             </div> 
         </div>

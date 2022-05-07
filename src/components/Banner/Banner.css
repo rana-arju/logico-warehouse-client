@@ -1,5 +1,5 @@
 .hero-banner h1 {
-    font-size: 48px;
+    font-size: 40px;
 }
 .hero-banner .btn {
     position: relative;
@@ -28,4 +28,7 @@
 }
 .hero-banner .btn:hover:before {
     width: 100%;
+}
+.color-title{
+    color: #0D6EFD;
 }
