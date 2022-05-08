@@ -13,6 +13,7 @@
 - React firebase hooks - it help us working with firebase
 - CSS - is a stylesheet language use for our site style
 - JSX - jsx mean javascript xml
+- React icons - use for social media icon set
 # File Sturucture
 
 - [x] /src
@@ -48,3 +49,5 @@
 - my product page whare we can show our own added product 
 - add product page whare we can added new item in the wbsite
 - Not Found page we can see 404 page
+# Custom React Skeleton
+- [x] Custom Skeleton make for product loading show. when fatching data from database that time react skeleton show.

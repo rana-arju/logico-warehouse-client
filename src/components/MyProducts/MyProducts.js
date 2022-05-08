@@ -8,14 +8,15 @@ import { toast } from 'react-toastify';
 import PageTitle from '../PageTitle/PageTitle';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
+import SkeletonMyProduct from '../../Skeletons/SkeletonMyProduct';
 const MyProducts = () => {
     const navigate = useNavigate();
     const [user]= useAuthState(auth);
 
     //find sindle item help of email
-    const [products, setProduct] = useState([]);
+    const [products, setProduct] = useState(null);
     useEffect(() => {
-        const getMyProducts = async() => {
+        setTimeout(async() => {
         const email = user.email;
         const url = `https://thawing-mountain-76840.herokuapp.com/myproducts?email=${email}`;
         try {
@@ -32,8 +33,7 @@ const MyProducts = () => {
                 toast.error(error.message)
             };
         }
-        }
-        getMyProducts();
+        }, 5000)
     },[user]);
     //single item delete functionality added
         const handleDeleteItem =id =>{
@@ -59,7 +59,7 @@ const MyProducts = () => {
     <Container className="mt-5 mb-5">
         <PageTitle title="My Product" />
         <h2 className='text-center mb-4 text-primary uppercase'>My All Products</h2>
-        {
+        { products && 
             products.map(product => 
             <div className="d-flex justify-content-center row mb-3" key={product._id}>
             <div className="col-md-10">
@@ -89,6 +89,7 @@ const MyProducts = () => {
         </div>
      </div>
     )}
+    {!products && [1,2].map(n =><SkeletonMyProduct key={n} />)}
 
 </Container>
     );

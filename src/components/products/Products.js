@@ -17,8 +17,6 @@ const Products = () => {
             if (!data?.success) return toast.error(data.error);
             setProduct(data?.data);
         },5000);
-       
-        
     },[]);
     //whan handle button click this redirect inventory/:id page
     const handleUpdate = id => {

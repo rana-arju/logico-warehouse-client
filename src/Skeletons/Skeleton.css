@@ -40,6 +40,11 @@
   height: 300px;
   border-radius: 20px;
 }
+.skeleton.p-img {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+}
 .skeleton.price {
   width: 50%;
   height: 15px;
@@ -70,6 +75,14 @@
 }
 .skeleton-wrapper.dark .skeleton{
   background-color: #777;
+}
+/* my product page  */
+.my-product-card{
+  max-width: 95%;
+  margin: 10px auto;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
 }
 /* animation effect */
 .shimmer-wrapper {
