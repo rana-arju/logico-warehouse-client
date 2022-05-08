@@ -14,12 +14,8 @@ const Inventory = () => {
             const res = await fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`);
             const data = await res.json();
             setProduct(data);
-        },5000);
-        // fetch(`https://thawing-mountain-76840.herokuapp.com/products/${id}`)
-        // .then(res => res.json())
-        // .then(data => {
-        //     setProduct(data);
-        // })
+        },2000);
+
     },[]);
     // Product quentity increment and decrement set and update database
     const [deliver, setDeliver] = useState(0);
@@ -65,9 +61,7 @@ const Inventory = () => {
     return (
          <Container>
              {
-                 products && (
-
-             
+                products && (
              <div className='product-card-inventory'>
                  <PageTitle title="Product Quentity Update" />
             <div className="product-tumb">

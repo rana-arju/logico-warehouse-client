@@ -5,16 +5,17 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { toast } from 'react-toastify';
 import "./ManageInventory.css";
 import PageTitle from '../PageTitle/PageTitle';
+import SkeletonProduct from '../../Skeletons/SkeletonProduct';
 
 const ManageInventory = () => {
     //get all product from database
-    const [products, setProduct] = useState([]);
+    const [products, setProduct] = useState(null);
     useEffect(()=>{
-        (async()=>{
+        setTimeout(async()=>{
             const {data} = await axios.get(`https://thawing-mountain-76840.herokuapp.com/allproducts`);
             if (!data?.success) return toast.error(data.error);
             setProduct(data?.data);
-        })();
+        },2000);
     },[]);
     //delete button handle
     const handleDeleteItem =id =>{
@@ -43,7 +44,7 @@ const ManageInventory = () => {
         <Container>
             <div className='product-container'>
            
-            {
+            {products &&
                products.map(product => <div className="product-card" key={product._id}>
             <div className="product-tumb">
                 <img src={product.images} alt="" />
@@ -63,7 +64,7 @@ const ManageInventory = () => {
             </div>
             </div>
         </div> )
-            }
+            }{!products && [1,2,3,4,5,6].map(n => <SkeletonProduct key={n} />)}
         </div>
         </Container>
         </div>

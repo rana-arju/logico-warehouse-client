@@ -97,12 +97,15 @@ a
 /*Mobile Responsive */
 
 @media only screen and (max-width: 992px) {
-    .product-container{
+.product-container{
     grid-template-columns: repeat(2, 1fr);
 }
 }
 @media only screen and (max-width: 768px) {
     .product-container{
     grid-template-columns: 1fr;
-}
+    }
+    .product-card{
+        margin: 10px auto;
+    }
 }
