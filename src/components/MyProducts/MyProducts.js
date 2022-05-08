@@ -80,7 +80,7 @@ const MyProducts = () => {
                        
                         </div>
                         <div className="d-flex flex-column">
-                            <h5 className='text-primary mb-4'>Stock: {product.stock}</h5>
+                            <h5 className='text-primary mb-4'>Stock: {product.stock ? product.stock : <span className="text-danger text-uppercase text-bold">sold</span>}</h5>
                             <button className="btn btn-danger btn-sm" type="button" onClick={() => handleDeleteItem(product._id)}>Delete Item</button>
                             <button className="btn btn-outline-primary btn-sm mt-3" type="button" onClick={() => handleUpdate(product._id)}>Stock Update</button>
                            </div>

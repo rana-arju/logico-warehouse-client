@@ -41,7 +41,7 @@ const Products = () => {
            		<div className="product-bottom-details">
 				<div className="product-price">Price: &#2547; {product.price}</div>
 				<div className="product-stock">
-                <p>Stock: <span>{product.stock}</span></p>
+                <p>Stock: <span>{product.stock ? product.stock : <span className="text-danger text-uppercase text-bold">sold</span>}</span></p>
 				</div>
 			</div>
             <div className="d-grid gap-2 ">

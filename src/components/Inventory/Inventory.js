@@ -66,6 +66,7 @@ const Inventory = () => {
                  <PageTitle title="Product Quentity Update" />
             <div className="product-tumb">
                 <img src={products.images} alt="" />
+                
             </div>
             <div className="product-details">
                 <span className="product-sellar">Sellar: {products.sellar}</span>
@@ -74,7 +75,7 @@ const Inventory = () => {
            		<div className="product-bottom-details">
 				<div className="product-price">Price: &#2547; {products.price}</div>
 				<div className="product-stock">
-                <p>Stock: <span>{deliver}</span></p>
+                <p>Stock: <span>{deliver ? deliver : <span className="text-danger text-uppercase text-bold">sold</span>}</span></p>
 				</div>
 			</div>
            
