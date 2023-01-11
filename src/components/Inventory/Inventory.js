@@ -5,6 +5,7 @@ import "./Inventory.css";
 import { toast } from "react-toastify";
 import PageTitle from "../PageTitle/PageTitle";
 import SkaletonInventory from "../../Skeletons/SkaletonInventory";
+
 const Inventory = () => {
   let { id } = useParams();
   // find specipic product by id

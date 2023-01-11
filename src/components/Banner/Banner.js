@@ -1,23 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Banner.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
+
+import banner from "../../images/Banner.png";
+
 const Banner = () => {
-    return (
-        <section className="hero-banner bg-light py-5">
-            <div className="container">
-                <div className="row row align-items-center">
-                    <div className="col-lg-5 offset-lg-1 order-lg-1">
-                        <img src="https://i.ibb.co/XbfqGDc/banner1.png" className="img-fluid" alt="logica banner" />
-                    </div>
-                    <div className="col-lg-6">
-                        <h1 className="mt-3 text-uppercase">we carry the <span className="color-title">latest equipment</span></h1>
-                        <p className="lead text-secondary my-5 text-capitalize">we provide fast service and new smartphone from our warehouse. genuine products. EMI facility.nationwide delivery.</p>
-                        <Link to="/contact" className="btn btn-outline-secondary btn-lg border">Contact Us</Link>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section
+      style={{
+        backgroundImage: `url(${banner})`,
+        backgroundSize: "cover",
+        maxWidth: "100%",
+        height: "600px",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="container">
+        <div className="banner_contain">
+          <h1 className="banner_heading">Up To 25% Discount Check it Out</h1>
+          <p className="banner_contain_pre">
+            Feature Packed at a better value then even Powerful sensors to
+            monitor your fitness
+          </p>
+          <NavLink to="/" className=" inline-block border-0 no-underline pt-8">
+            <button className=" flex text-[#fff] items-center xl:text-[18px] bg-[#ff7f50] px-[34px] py-[16px] rounded-3xl font-sans font-bold hover:bg-[#444c38] duration-300 ">
+              Shop Now <AiOutlineArrowRight className="xl:text-[18px] ml-1" />
+            </button>
+          </NavLink>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Banner;
