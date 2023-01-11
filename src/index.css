@@ -4,14 +4,139 @@
 body {
   margin: 0;
   overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@layer components {
+  /* Navbar */
+  .nav_bar {
+    @apply lg:col-span-6 no-underline;
+  }
+  .Nav_link {
+    @apply text-[#000] xl:ml-[14px] justify-start xl:text-[20px] lg:ml-[8px] lg:text-[17px];
+  }
+  .nav_login {
+    @apply w-5 text-[#000] inline-block;
+  }
+  /* Banner */
+  .banner_contain {
+    @apply xl:w-[35%] md:w-[50%] xl:pt-[120px] md:pt-[140px] sm:w-[60%] sm:pt-[180px];
+  }
+
+  .banner_contain_pre {
+    @apply text-[#ffffff] xl:text-lg font-sans font-semibold xl:pt-3 md:pt-4;
+  }
+
+  .user_data {
+    @apply bg-[#ffc25d] md:w-[20%] absolute top-[55px] lg:right-20 right-0 pl-4 pt-2 pb-3;
+  }
+  /* Footer */
+  .text-reset {
+    @apply no-underline hover:underline;
+  }
+}
+
+@layer utilities {
+  @media only screen and (max-width: 1023px) {
+    .nav_bar {
+      position: absolute;
+      width: 30%;
+      top: 55px;
+      right: 50px;
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      background: #ffc25d;
+      transition: all 0.3s;
+    }
+    .actives {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .Menu_Button {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+      display: block;
+      margin: 8px 20px 0px 0px;
+      font-size: 26px;
+    }
+    .nav_overlay {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .Menu_Button_item {
+      display: flex;
+    }
+    .Nav_link {
+      padding: 12px 0px 0px 0px;
+    }
+    .nav_list {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      padding: 22px 0px 35px 74px;
+    }
+  }
+  /*Media Screen 767px*/
+  @media only Screen and (max-width: 767px) {
+    .nav_bar {
+      width: 50%;
+      right: 0px;
+    }
+    .nav_list {
+      padding: 22px 0px 35px 15px;
+    }
+    .banner_contain {
+      width: 80%;
+      padding-top: 180px;
+      padding-left: 60px;
+      text-align: center;
+    }
+    .banner_heading {
+      font-size: 35px;
+      padding-bottom: 10px;
+      font-weight: 900;
+    }
+    .banner_contain_pre {
+      font-size: 22px;
+    }
+  }
+
+  @media only Screen and (max-width: 640px) {
+    .banner_contain {
+      width: 100%;
+      padding: 120px 20px 0px 0px;
+      text-align: center;
+    }
+    .banner_heading {
+      font-size: 25px;
+      font-weight: 900;
+    }
+    .banner_contain_pre {
+      font-size: 19px;
+    }
+
+    .user_data {
+      width: 40%;
+    }
+  }
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a.active {
+  color: #fffefd;
 }
