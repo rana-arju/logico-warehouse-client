@@ -27,26 +27,26 @@ function App() {
         <Route path='/contact' element={<ContactUs />} />
 
         <Route path='/addProduct' element={
-        <RequireAuth>
+        // <RequireAuth>
           <AddProduct />
-        </RequireAuth>
+        // </RequireAuth> 
       
         } />
         <Route path="/manageInventory" element={
-        <RequireAuth>
+        // <RequireAuth>
           <ManageInventory />
-        </RequireAuth>
+        // </RequireAuth>
        } />
         <Route path='/myproduct' element={
-        <RequireAuth>
+        // <RequireAuth>
             <MyProducts />
-        </RequireAuth>
+        // </RequireAuth>
         
         } />
         <Route path='/inventory/:id' element={
-          <RequireAuth>
+          // <RequireAuth>
               <Inventory />
-          </RequireAuth>
+          // </RequireAuth>
         } /> 
         <Route path="*" element= {<NotFound />} />
       </Routes>

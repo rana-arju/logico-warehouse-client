@@ -69,7 +69,7 @@ const Products = () => {
                       type="button"
                       onClick={() => handleUpdate(product._id)}
                     >
-                      Stock Update
+                      Buy Product
                     </button>
                   </div>
                 </div>
