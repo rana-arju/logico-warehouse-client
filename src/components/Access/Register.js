@@ -1,79 +1,98 @@
-import React from 'react';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
-import { Button, Container, Form } from 'react-bootstrap';
-import SocialMedia from './SocialMedia/SocialMedia';
-import {useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
-import {toast} from 'react-toastify';
-import PageTitle from '../PageTitle/PageTitle';
-import Loading from '../loading/Loading';
+import React from "react";
+import { Link, useLocation, useNavigate} from "react-router-dom";
+import { Button, Container, Form } from "react-bootstrap";
+import "./style.css"
+import PageTitle from "../PageTitle/PageTitle";
+
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { registrationAction } from "../../redux/actions/registrationAction";
+
 const Register = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  const [
-    createUserWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useCreateUserWithEmailAndPassword(auth);
-  const [sendEmailVerification] = useSendEmailVerification(auth);
-  if (error) {
-    return toast.error(error.message);
-  }
-  if (loading) {
-    return <Loading />;
-  }
-  if (user) {
-   navigate(from, { replace: true }); 
-   toast.success(`Thank You For joining us!`);
-  }
-const handleRegister = async(event) =>{
-    event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    if(password.length < 6){
-       return toast.error('Please Enter At least 6 Character password');
-    }else{
-      await createUserWithEmailAndPassword(email, password);
-      await sendEmailVerification();
-      toast.success('Verification Email Send!');
-      event.target.reset();
-    }
-}
-return (
-<Container className="my-10 border-2 border-red-500 rounded-xl box mx-auto p-4">
-  <PageTitle title="Registation" />
-<h2 className='mt-3 text-center'>Please Register</h2>
-<div className="my-10">
-<Form onSubmit={handleRegister}>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Full Name</Form.Label>
-        <Form.Control type="text" name='name' placeholder="Enter Your Name" required />
-    </Form.Group>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name='email' placeholder="Enter email" required />
-        <Form.Text className="text-muted">
-        We'll never share your email with anyone else.
-        </Form.Text>
-    </Form.Group>
+    navigate(from, { replace: true });
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name='password' placeholder="Password" required />
-    </Form.Group>
-    <Form.Text id="passwordHelpBlock">
-       <p  className='text-lg'> Already Have An Account?<Link to="/login"> Please Login</Link> </p>
-  </Form.Text>
-    <div className="d-grid gap-2 mt-3">
-        <Button variant="primary" size="lg" type="submit" >Register</Button>
-    </div>
-</Form>
-</div>
-<SocialMedia />
-</Container>
-    );
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+
+  const onSubmit = (data) => {
+    dispatch(registrationAction(data, navigate, from));
+    reset();
+  };
+
+  return (
+    <Container className="my-10 border-2 border-red-500 rounded-xl box mx-auto p-4">
+      <PageTitle title="Registation" />
+      <h2 className="mt-3 text-center">Please Register</h2>
+      <div className="my-10">
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form.Group className="mb-3" controlId="firstName">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter first name"
+              {...register("first_name", { required: true })}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="LastName">
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter last name"
+              {...register("last_name", { required: true })}
+            />
+            {errors.last_name && <span>This field is required</span>}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "Please enter a valid email",
+                },
+              })}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              {...register("password", { required: true })}
+            />
+          </Form.Group>
+          <Form.Text id="passwordHelpBlock">
+            <p className="text-lg">
+              Already Have An Account?<Link to="/login"> Please Login</Link>{" "}
+            </p>
+          </Form.Text>
+          <div className="d-grid gap-2 mt-3">
+            <Button variant="primary" size="lg" type="submit">
+              Register
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </Container>
+  );
 };
 
 export default Register;

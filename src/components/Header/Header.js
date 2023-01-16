@@ -18,7 +18,7 @@ const Header = () => {
   const handelUserInfo = () => setUserInfo(!UserInfo);
 
   const logout = () => {
-    signOut(auth);
+    localStorage.removeItem("token");
   };
   return (
     <nav className="bg-[#FF8F1B]">
@@ -87,7 +87,7 @@ const Header = () => {
                   className={UserInfo ? "user_data block" : "user_data hidden"}
                 >
                   <span
-                    onClick={logout}
+                    onClick={() => logout()}
                     className="flex items-center text-xl font-sans font-semibold cursor-pointer"
                   >
                     <AiOutlineLogout className="text-[26px] mr-2" />

@@ -24,7 +24,7 @@ const Banner = () => {
             monitor your fitness
           </p>
           <NavLink to="/" className=" inline-block border-0 no-underline pt-8">
-            <button className=" flex text-[#fff] items-center xl:text-[18px] bg-[#ff7f50] px-[34px] py-[16px] rounded-3xl font-sans font-bold hover:bg-[#444c38] duration-300 ">
+            <button className=" flex text-[#fff] items-center xl:text-[18px] bg-[#ff7f50] px-[34px] py-[16px] rounded-3xl font-sans font-bold hover:bg-transform duration-300 ">
               Shop Now <AiOutlineArrowRight className="xl:text-[18px] ml-1" />
             </button>
           </NavLink>
