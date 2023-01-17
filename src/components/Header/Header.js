@@ -1,16 +1,24 @@
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { BiLogIn } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineLogout } from "react-icons/ai";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
-  const [user] = useAuthState(auth);
+  const dispatch = useDispatch();
+  const [user, setUser] = useState(
+    Cookies.get("user") ? JSON.parse(Cookies.get("user")) : null
+  );
+  const navigate = useNavigate();
+
+
   const [Menu, setMenu] = useState(false);
   const [UserInfo, setUserInfo] = useState(false);
 
@@ -18,7 +26,12 @@ const Header = () => {
   const handelUserInfo = () => setUserInfo(!UserInfo);
 
   const logout = () => {
+    dispatch({
+      type: "LOGOUT",
+    });
     localStorage.removeItem("token");
+    Cookies.remove("user");
+    navigate("/login")
   };
   return (
     <nav className="bg-[#FF8F1B]">
@@ -67,19 +80,12 @@ const Header = () => {
             {user ? (
               <>
                 <span className="d-flex items-center justify-end">
-                  {user?.photoURL ? (
+                  {user?.picture && (
                     <img
                       onClick={handelUserInfo}
                       className="w-10 h-10 rounded-full cursor-pointer"
-                      src={`${user?.photoURL}`}
-                      alt={`${user.displayName.split(" ")[0]}`}
-                    />
-                  ) : (
-                    <img
-                      onClick={handelUserInfo}
-                      className="w-10 h-10 rounded-full cursor-pointer"
-                      src="https://i.ibb.co/kG6vXJx/default-avatar-placeholder-profile-icon-male-vector.jpg "
-                      alt={`${user.displayName}`}
+                      src={`${user?.picture}`}
+                      alt={`${user.first_name}`}
                     />
                   )}
                 </span>

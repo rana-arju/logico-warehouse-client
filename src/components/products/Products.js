@@ -13,12 +13,11 @@ const Products = () => {
   const [products, setProduct] = useState(null);
   useEffect(() => {
     setTimeout(async () => {
-      const { data } = await axios.get(
-        `https://logico-server.onrender.com/products`
-      );
-      if (!data?.success) return toast.error(data.error);
-      setProduct(data?.data);
-    }, 5000);
+      const { data } = await axios.get(`http://localhost:5000/api/v1/products`);
+      console.log("data", data.products);
+      if (!data.products) return toast.error(data.error);
+      setProduct(data.products);
+    }, 2000);
   }, []);
   //whan handle button click this redirect inventory/:id page
   const handleUpdate = (id) => {
@@ -33,7 +32,7 @@ const Products = () => {
       <Container>
         <div className="product-container">
           {products &&
-            products.map((product) => (
+            products.slice(0,6).map((product) => (
               <div className="product-card" key={product._id}>
                 <div className="product-tumb">
                   <img src={product.images} alt="" />

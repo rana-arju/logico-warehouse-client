@@ -12,18 +12,17 @@ const ManageInventory = () => {
   const [products, setProduct] = useState(null);
   useEffect(() => {
     setTimeout(async () => {
-      const { data } = await axios.get(
-        `https://logico-server.onrender.com/allproducts`
-      );
-      if (!data?.success) return toast.error(data.error);
-      setProduct(data?.data);
+      const { data } = await axios.get(`http://localhost:5000/api/v1/products`);
+      console.log("data", data.products);
+      if (!data.products) return toast.error(data.error);
+      setProduct(data.products);
     }, 2000);
   }, []);
   //delete button handle
   const handleDeleteItem = (id) => {
     const proceed = window.confirm("Are You Sure? Want To Delete This Item?");
     if (proceed) {
-      fetch(`https://logico-server.onrender.com/products/${id}`, {
+      fetch(`http://localhost:5000/api/v1/deleteProduct/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

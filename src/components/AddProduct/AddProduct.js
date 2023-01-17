@@ -59,7 +59,7 @@ const AddProduct = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Sellar Email</Form.Label>
-            <Form.Control type="text" value={user.email} disabled required />
+            <Form.Control type="text" value={""} disabled required />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Price</Form.Label>

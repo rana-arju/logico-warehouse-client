@@ -6,7 +6,7 @@ import PageTitle from "../PageTitle/PageTitle";
 
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { registrationAction } from "../../redux/actions/registrationAction";
+import { registrationAction } from "../../redux/actions/authAction";
 
 const Register = () => {
   const dispatch = useDispatch();

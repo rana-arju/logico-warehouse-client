@@ -5,8 +5,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
 import PageTitle from "../PageTitle/PageTitle";
-import Loading from "../loading/Loading";
-import { loginAction } from "../../redux/actions/loginAction";
+import { loginAction } from "../../redux/actions/authAction";
 const Login = () => {
   const {
     register,

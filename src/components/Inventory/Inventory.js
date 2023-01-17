@@ -13,7 +13,7 @@ const Inventory = () => {
   useEffect(() => {
     setTimeout(async () => {
       const res = await fetch(
-        `https://logico-server.onrender.com/products/${id}`
+        `http://localhost:5000/api/v1/singleProduct/${id}`
       );
       const data = await res.json();
       setProduct(data);
@@ -46,7 +46,7 @@ const Inventory = () => {
   };
   //Update product quentity
   useEffect(() => {
-    fetch(`https://logico-server.onrender.com/allproducts/${id}`, {
+    fetch(`http://localhost:5000/api/v1/singleProduct/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -14,8 +14,17 @@ import RequireAuth from "./RequireAuth/RequireAuth";
 import { ToastContainer } from "react-toastify";
 import ContactUs from "./components/ContactUs/ContactUs";
 import Inventory from "./components/Inventory/Inventory";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 function App() {
+  // const [user, setUser] = useState();
+  // useEffect(() => {
+  //   const user = Cookies.get(JSON.parse("user"));
+  //   setUser(user)
+  // }, []);
+  // console.log("user", user);
   return (
     <div>
       <Header />
@@ -59,7 +68,6 @@ function App() {
           }
         />
         <Route path="*" element={<NotFound />} />
-
       </Routes>
       <Footer />
       <ToastContainer />
