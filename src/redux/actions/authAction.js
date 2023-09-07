@@ -16,7 +16,7 @@ export const loginAction = (data, navigate, from) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
 
   axios
-    .put(`http://localhost:5000/api/v1/login`, data)
+    .put(`https://logico-warehouse-server.vercel.app/api/v1/login`, data)
     .then((res) => {
       if (res) {
         dispatch({
@@ -39,7 +39,7 @@ export const registrationAction =
 
     dispatch({ type: REGISTRATION_REQUEST });
     axios
-      .post(`http://localhost:5000/api/v1/register`, data)
+      .post(`https://logico-warehouse-server.vercel.app/api/v1/register`, data)
       .then((res) => {
         if (res) {
           dispatch({

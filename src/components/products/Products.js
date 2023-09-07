@@ -13,7 +13,7 @@ const Products = () => {
   const [products, setProduct] = useState(null);
   useEffect(() => {
     setTimeout(async () => {
-      const { data } = await axios.get(`http://localhost:5000/api/v1/products`);
+      const { data } = await axios.get(`https://logico-warehouse-server.vercel.app/api/v1/products`);
       console.log("data", data.products);
       if (!data.products) return toast.error(data.error);
       setProduct(data.products);
