@@ -77,7 +77,7 @@ const Inventory = () => {
               </div>
               <div className="product-stock">
                 <p>
-                  Stock:{" "}
+                  Stock:
                   <span>
                     {deliver ? (
                       deliver

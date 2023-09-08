@@ -33,13 +33,11 @@ export const loginAction = (data, navigate, from) => async (dispatch) => {
       dispatch({ type: LOGIN_FAILED, payload: err });
     });
 };
-export const registrationAction =
-  (data, navigate, from) => async (dispatch) => {
-    console.log("data", data);
+export const registrationAction =(data, navigate, from) => async (dispatch) => {
+
 
     dispatch({ type: REGISTRATION_REQUEST });
-    axios
-      .post(`https://logico-warehouse-server.vercel.app/api/v1/register`, data)
+  await axios.post(`https://logico-warehouse-server.vercel.app/api/v1/register`, data)
       .then((res) => {
         if (res) {
           dispatch({
@@ -48,8 +46,10 @@ export const registrationAction =
           });
           Cookies.set("user", JSON.stringify(res.data), { expires: 7 });
           localStorage.setItem("token", res.data.token);
-          navigate(from, { replace: true });
-          toast.success(res.data.message);
+          if (res.data.token) {
+            navigate(from, { replace: true });
+            toast.success(res.data.message);
+          }
         }
       })
       .catch((err) => {
